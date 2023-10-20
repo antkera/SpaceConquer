@@ -1,0 +1,84 @@
+#start-btn {
+  background-color: green;
+  color: white;
+  padding: 20px;
+  font-size: 20px;
+  margin-top: 40px;
+  border-radius: 10px; 
+  
+}
+
+body {
+  margin: 0;
+}
+#homePage {
+
+  display: flex;
+  justify-content: center;
+  
+  background-color: aqua;
+}
+#gameSection {
+  display: none;
+  background-color: black;
+  color: blue;
+  position: relative;
+  flex-direction: column;
+}
+#space {
+  /* width: 1980px; */
+  height: 1080px;
+
+
+  background-image: url("./resources/img/space.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+#gameOverSection {
+  display: none;
+  background-color: blueviolet;
+  color: red;
+}
+#mainPage {
+}
+.divStart{
+  display: flex;
+  /* flex-direction: row; */
+  /* justify-content: center; */
+  align-items: center;
+  
+}
+.flexed {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+.sizeL {
+  /* width: 1800px; */
+  height: 1080px;
+}
+
+.PlanetImg{
+  border-radius: 1000px;
+  position: absolute;
+}
+.ShipImg{
+  position: absolute;
+}
+
+#PlanetaDePrueba {
+
+
+    background-image: url(./resources/img/planetaHielo1.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    
+    position: absolute;
+    top: 30%;
+    left: 90%;
+
+}
