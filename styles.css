@@ -69,6 +69,7 @@ body {
 }
 
 #PlanetaDePrueba {
+  display: none;
 
 
     background-image: url(./resources/img/planetaHielo1.jpg);

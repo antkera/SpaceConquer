@@ -2,10 +2,10 @@ class Planet {
   constructor(coor) {
     this.node = document.createElement("img");
     this.node.src = "./resources/img/planetaHielo1.jpg";
-    this.node.classList.add("PlanetImg")
+    this.node.classList.add("PlanetImg");
     gameBoxNode.append(this.node);
 
-    this.numFabricas = 2
+    this.numFabricas = 2;
     this.planetSize = 50 * this.numFabricas;
     this.w = this.planetSize; //weight
     this.h = this.planetSize; //heigth
@@ -14,39 +14,35 @@ class Planet {
 
     this.node.style.width = `${this.w}px`;
     this.node.style.height = `${this.h}px`;
-    this.node.style.left = `${this.x}%`;
-    this.node.style.top = `${this.y}%`;
-    
+    this.node.style.left = `${this.x}px`;
+    this.node.style.top = `${this.y}px`;
+    this.node.addEventListener("click", this.planetFocus);
   }
 
-  decirHola = () => {
-    console.log("hola");
+  planetFocus = () => {
+    // game1.loopMoverNave(this)
+    game1.planetFocused = this
+
+
+
+
+
+
+
+    // console.log("planeta fijado", this.x, this.y);
+    // // game1.decirHola()
+    // // decirHola()
+    // game1.gameShipLaunch(this)
+    // game1.ship1.moverNave(game1.BluePlanet.node)
   };
 
   devolverNode = () => {
-    return this.node
-  }
+    return this.node;
+  };
 
+  //funciones:
 
-    //funciones:
-
-    // fabricarEjercito
-    //cargarEjercito
-    //defenderPlaneta
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  // fabricarEjercito
+  //cargarEjercito
+  //defenderPlaneta
 }
