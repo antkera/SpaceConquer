@@ -33,7 +33,7 @@ class Planet {
   };
 
   fabricarEjercito = () => {
-    this.tropas += 0.1 * this.numFabricas;
+    this.tropas += 0.01 * this.numFabricas;
   }
 
   actualizarTextoInterno = () => {
@@ -42,7 +42,7 @@ class Planet {
       this.node.style.borderColor = "blue"
     } if(this.owner === "neutral"){
       this.node.style.color = "yellow"
-    } if(this.owner === "IA"){
+    } if(this.owner === "enemy"){
       this.node.style.color = "red"
     }
   }

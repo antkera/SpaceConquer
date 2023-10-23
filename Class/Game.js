@@ -11,17 +11,11 @@ class Game {
       new Planet([700, 200]),
       new Planet([500, 350])
     ]
-    // this.bluePlanet = new Planet([5, 5]);
-    // this.planet2 = new Planet([55, 350]);
-    // this.planet3 = new Planet([350, 55]);
-    // this.planet4 = new Planet([900, 55]);
-    // this.planet5 = new Planet([700, 200]);
-    // this.planet6 = new Planet([500, 350]);
     this.planetFocused = this.planetArray[0];
     this.planetFrom = this.planetArray[0];
 
+    this.enemy = new EnemyShip();
     this.ship1 = new Ship();
-    // this.enemy = new EnemyShip();
 
   }
 
@@ -46,6 +40,7 @@ class Game {
   };
 
   renderAll = () => {
+    this.enemy.actualizarTextoInterno();
     this.ship1.actualizarTextoInterno();
     this.planetArray.forEach( (elm) => {elm.actualizarTextoInterno()})
   };
@@ -57,6 +52,8 @@ class Game {
 
   // GAME LOOP --------------------**************************--------------------------
   gameLoop = () => {
+    // info de la nave:
+    if (!this.ship1.acoplado){console.log(this.ship1.setTargetDistance(this.planetFocused));}
     // this.timer++;
     //mover la nave
     if (this.planetFocused !== this.planetFrom) {
@@ -67,10 +64,16 @@ class Game {
     // this.enemy.setTargetDistance();
 
 
+
+
     // ejercito
     this.renderAll();
     this.fabricarEjercitosPlanetas();
     this.ship1.atacarPlaneta(this.planetFocused)
+    // this.enemy.atacarPlaneta(this.planetFocused)
+    // this.enemy.decirHola2();
+    this.enemy.enemyAutomaticMovement();
+
 
     // motor del bucle
     if (this.isGameOn) {
