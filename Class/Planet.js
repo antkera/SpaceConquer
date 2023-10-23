@@ -2,11 +2,16 @@ class Planet {
   constructor(coor) {
     this.node = document.createElement("div");
     // this.node.src = "./resources/img/planetaHielo1.jpg";
-    this.node.classList.add("PlanetImg");
+    this.node.classList.add("PlanetImgPlayer");
     gameBoxNode.append(this.node);
-
+    
     this.numFabricas = 2;
+    this.maxTropas = 200*this.numFabricas
+    this.tropas = this.maxTropas /2;
     this.planetSize = 50 * this.numFabricas;
+    // this.textoInterno = `${this.tropas}`
+    this.owner = "neutral"
+
     this.w = this.planetSize; //weight
     this.h = this.planetSize; //heigth
     this.x = coor[0]; // posicion eje x (desde la derecha)
@@ -19,28 +24,40 @@ class Planet {
     this.node.addEventListener("click", this.planetFocus);
   }
 
+
+
+  // FUNCIONES --------------------*****************-------------------
+
   planetFocus = () => {
-    // game1.loopMoverNave(this)
     game1.planetFocused = this
-
-
-
-
-
-
-
-    // console.log("planeta fijado", this.x, this.y);
-    // // game1.decirHola()
-    // // decirHola()
-    // game1.gameShipLaunch(this)
-    // game1.ship1.moverNave(game1.BluePlanet.node)
   };
 
-  devolverNode = () => {
-    return this.node;
-  };
+  fabricarEjercito = () => {
+    this.tropas += 0.1 * this.numFabricas;
+  }
 
-  //funciones:
+  actualizarTextoInterno = () => {
+    this.node.innerText = Math.floor(this.tropas);
+    if(this.owner === "player"){
+      this.node.style.borderColor = "blue"
+    } if(this.owner === "neutral"){
+      this.node.style.color = "yellow"
+    } if(this.owner === "IA"){
+      this.node.style.color = "red"
+    }
+  }
+
+  receiveAttack = () => {
+
+  }
+
+  // devolverNode = () => {
+  //   return this.node;
+  // };
+
+  
+
+  
 
   // fabricarEjercito
   //cargarEjercito
