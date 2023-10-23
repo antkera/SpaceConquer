@@ -61,8 +61,15 @@ body {
 }
 
 .PlanetImg{
+  margin: 25px; /* espacio que va a dejar la nave */
   border-radius: 1000px;
   position: absolute;
+  background-color: red;
+  /* border-image: round; */
+  background-image: url(./resources/img/planetaHielo1.jpg);
+  border-color: red;
+  background-size:cover;
+
 }
 .ShipImg{
   position: absolute;

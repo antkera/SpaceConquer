@@ -1,7 +1,7 @@
 class Planet {
   constructor(coor) {
-    this.node = document.createElement("img");
-    this.node.src = "./resources/img/planetaHielo1.jpg";
+    this.node = document.createElement("div");
+    // this.node.src = "./resources/img/planetaHielo1.jpg";
     this.node.classList.add("PlanetImg");
     gameBoxNode.append(this.node);
 
