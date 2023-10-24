@@ -4,7 +4,7 @@ const startButtonNode = document.querySelector("#start-btn");
 let planet1node;
 const gameBoxNode = document.querySelector("#gameSection");
 const homePageNode = document.querySelector("#homePage");
-console.log(homePageNode);
+// console.log(homePageNode);
 let game1;
 
 const startGame = () => {

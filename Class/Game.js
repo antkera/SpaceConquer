@@ -4,12 +4,13 @@ class Game {
     this.timer = 0;
     this.isGameOn = true;
     this.planetArray = [
-      new Planet([5, 5]),
-      new Planet([55, 350]),
-      new Planet([350, 55]),
-      new Planet([900, 55]),
-      new Planet([700, 200]),
-      new Planet([500, 350])
+      new Planet([5, 5], 2),
+      new Planet([55, 350], 1),
+      new Planet([350, 55], 3),
+      new Planet([900, 55], 2),
+      new Planet([700, 200], 3),
+      new Planet([500, 350], 2),
+      new Planet([1200, 100], 1)
     ]
     this.planetFocused = this.planetArray[0];
     this.planetFrom = this.planetArray[0];
@@ -36,6 +37,7 @@ class Game {
   };
 
   loopMoverNave = (planeta) => {
+    this.ship1.target = this.planetFocused
     this.ship1.moverNave(planeta);
   };
 
@@ -49,6 +51,20 @@ class Game {
     this.planetArray.forEach((elm) => {elm.fabricarEjercito()})
     
   };
+  checkCongratulations = () => {
+
+  }
+  checkGameOver = () => {
+    let gameOver = false
+    this.planetArray.forEach((eachPlanet) => {
+      if (eachPlanet.owner === "enemy"){
+        gameOver = true
+      }else{gameOver = false}
+    })
+    if (gameOver === true){
+      this.gameOver();
+    }
+  }
 
   // GAME LOOP --------------------**************************--------------------------
   gameLoop = () => {
@@ -59,6 +75,7 @@ class Game {
     if (this.planetFocused !== this.planetFrom) {
       this.planetFrom = this.ship1.moverNave(this.planetFocused);
     }
+    // this.checkGameOver();
     
     // IA
     // this.enemy.setTargetDistance();

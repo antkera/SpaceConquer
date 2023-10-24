@@ -1,11 +1,11 @@
 class Planet {
-  constructor(coor) {
+  constructor(coor, numFabricas) {
     this.node = document.createElement("div");
     // this.node.src = "./resources/img/planetaHielo1.jpg";
     this.node.classList.add("PlanetImgPlayer");
     gameBoxNode.append(this.node);
     
-    this.numFabricas = 2;
+    this.numFabricas = numFabricas;
     this.maxTropas = 200*this.numFabricas
     this.tropas = this.maxTropas /2;
     this.planetSize = 50 * this.numFabricas;
@@ -33,7 +33,8 @@ class Planet {
   };
 
   fabricarEjercito = () => {
-    this.tropas += 0.01 * this.numFabricas;
+    if (this.tropas <= this.maxTropas)
+    this.tropas += 0.1 * this.numFabricas;
   }
 
   actualizarTextoInterno = () => {
@@ -41,9 +42,9 @@ class Planet {
     if(this.owner === "player"){
       this.node.style.borderColor = "blue"
     } if(this.owner === "neutral"){
-      this.node.style.color = "yellow"
+      this.node.style.borderColor = "yellow"
     } if(this.owner === "enemy"){
-      this.node.style.color = "red"
+      this.node.style.borderColor = "red"
     }
   }
 
@@ -51,15 +52,5 @@ class Planet {
 
   }
 
-  // devolverNode = () => {
-  //   return this.node;
-  // };
-
   
-
-  
-
-  // fabricarEjercito
-  //cargarEjercito
-  //defenderPlaneta
 }

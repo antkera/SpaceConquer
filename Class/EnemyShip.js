@@ -4,7 +4,7 @@ class EnemyShip extends Ship {
     this.node.classList.remove("ShipImgPlayer");
     this.node.classList.add("enemyShip"); //crear en CSS
     this.x = 1200;
-    this.y = 100;
+    this.y = 200;
     this.node.style.left = `${this.x}px`;
     this.node.style.top = `${this.y}px`;
     this.shipSpeed = 1;
@@ -12,7 +12,7 @@ class EnemyShip extends Ship {
 
     // IA
 
-    this.target = "" // empezamos por planeta natal enemigo
+    this.target; // empezamos por planeta natal enemigo
 
     // this.targetScore =
     this.targetDistance = 0;
@@ -37,34 +37,68 @@ class EnemyShip extends Ship {
   };
 
   findNearSuitablePlanet = (planetArr) => {
-    let planet = "";
-    let distance = 1000000;
+    let planet;
+    let distance = this.alcanceMaximo;
     planetArr.forEach((eachPlanet) => {
       if (
         this.setTargetDistance(eachPlanet) < distance &&
-        eachPlanet.tropas < this.tropas &&
-        eachPlanet !== this.target &&
+        eachPlanet.tropas < this.tropas *0.8 &&
+        eachPlanet.tropas > 0 &&
         eachPlanet.owner !== "enemy"
       ) {
         distance = this.setTargetDistance(eachPlanet);
         planet = eachPlanet;
-      }
+      } 
+      // else if (){planet = game1.planetArray[6]}
     });
+     if (!planet){
+      return this.findNearSuitablePlanetToReload(planetArr)
+     }
+   
+    // console.log(planet)
+    return planet;
+  };
+
+  findNearSuitablePlanetToReload = (planetArr) => {
+    let planet;
+    let distance = this.alcanceMaximo;
+    planetArr.forEach((eachPlanet) => {
+      if (
+        this.setTargetDistance(eachPlanet) < distance &&
+        eachPlanet.tropas > this.tropas &&
+        eachPlanet.tropas > 0 &&
+        eachPlanet.owner === "enemy"
+      ) {
+        distance = this.setTargetDistance(eachPlanet);
+        planet = eachPlanet;
+        
+      } 
+      
+      
+    })
+
+    if(!planet){
+    return planetArr[6] };
+   
+    // console.log(planet)
     return planet;
   };
 
   setTarget = () => {
-    if (this.acoplado) {
-      this.target = this.findNearSuitablePlanet(game1.planetArr);
+    if (!this.isAttacking && !this.isReloading) {
+      this.target = this.findNearSuitablePlanet(game1.planetArray);
       this.targetDistance = this.setTargetDistance(this.target);
+      console.log("seting Target");
       return this.target;
     }
-    
   }
 
 
   enemyAutomaticMovement = () => {
-    return this.moverNave(this.setTarget)
+    
+    this.moverNave(this.setTarget())
+    // console.log(this);
+    this.atacarPlaneta(this.target)
 
   }
   // let randomNumber = Math.floor(Math.random() * game1.planetArray.length);

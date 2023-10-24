@@ -5,16 +5,20 @@ class Ship {
     this.node.classList.add("ShipImgPlayer");
     gameBoxNode.append(this.node);
 
+    this.target ;
+    this.isAttacking = false;
+    this.isReloading = false;
+    this.alcanceMaximo = 6000;
     this.owner = "player";
-    this.acoplado = true;
-    this.tropas = 1000;
+    this.acoplado = false;
+    this.tropas = 400;
     this.shipSpeed = 1;
     this.textoInterno = `${this.tropas}`;
     // this.target = game1.planetArray[0];
 
     this.w = 80; //weight
     this.h = 20; //heigth
-    this.x = 5; // posicion eje x (desde la derecha)
+    this.x = 50; // posicion eje x (desde la derecha)
     this.y = 5; // posicion eje y (desde la arriba)
 
     this.node.style.width = `${this.w}px`;
@@ -43,6 +47,9 @@ class Ship {
   };
 
   moverNave = (target) => {
+    if (!this.isAttacking && !this.isReloading) {
+
+    
     // console.log(this);
     // console.log(planetaFocused);
 
@@ -70,6 +77,7 @@ class Ship {
       this.node.style.left = `${this.x}px`;
       this.node.style.top = `${this.y}px`;
       // console.log(`acoplado = ${this.acoplado}`);
+      }
     }
   };
 
@@ -80,12 +88,19 @@ class Ship {
   atacarPlaneta = (target) => {
     if (target.owner !== this.owner && this.acoplado) {
       if (target.tropas > 0 && this.tropas > 0) {
+        this.isAttacking = true
+      this.isReloading = false;
+
         target.tropas--;
         this.tropas--;
         // console.log("atacando");
+      }if (target.tropas > 0 && this.tropas <= 0) {
+        
+        this.isAttacking = false;
       }
       if (target.tropas <= 0 && this.tropas > 0) {
         target.owner = this.owner;
+        this.isAttacking = false;
       }
     }
     if (
@@ -95,6 +110,15 @@ class Ship {
     ) {
       target.tropas--;
       this.tropas++;
+      this.isAttacking = false;
+      this.isReloading = true;
+    }if (
+      target.owner === this.owner &&
+      this.acoplado &&
+      target.tropas <= 0
+    ) {
+      this.isAttacking = false;
+      this.isReloading = false;
     }
   };
 
