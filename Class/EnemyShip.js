@@ -42,7 +42,7 @@ class EnemyShip extends Ship {
     planetArr.forEach((eachPlanet) => {
       if (
         this.setTargetDistance(eachPlanet) < distance &&
-        eachPlanet.tropas < this.tropas *0.8 &&
+        eachPlanet.tropas < this.tropas *0.7 &&
         eachPlanet.tropas > 0 &&
         eachPlanet.owner !== "enemy"
       ) {
@@ -61,15 +61,15 @@ class EnemyShip extends Ship {
 
   findNearSuitablePlanetToReload = (planetArr) => {
     let planet;
-    let distance = this.alcanceMaximo;
+    let tropas = 0;
     planetArr.forEach((eachPlanet) => {
       if (
-        this.setTargetDistance(eachPlanet) < distance &&
-        eachPlanet.tropas > this.tropas &&
+        eachPlanet.tropas > tropas &&
+        // eachPlanet.tropas > this.tropas &&
         eachPlanet.tropas > 0 &&
         eachPlanet.owner === "enemy"
       ) {
-        distance = this.setTargetDistance(eachPlanet);
+        tropas = eachPlanet.tropas;
         planet = eachPlanet;
         
       } 

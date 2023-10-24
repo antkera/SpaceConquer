@@ -11,6 +11,7 @@ class Planet {
     this.planetSize = 50 * this.numFabricas;
     // this.textoInterno = `${this.tropas}`
     this.owner = "neutral"
+    this.coor = coor;
 
     this.w = this.planetSize; //weight
     this.h = this.planetSize; //heigth
@@ -21,15 +22,30 @@ class Planet {
     this.node.style.height = `${this.h}px`;
     this.node.style.left = `${this.x}px`;
     this.node.style.top = `${this.y}px`;
-    this.node.addEventListener("click", this.planetFocus);
+    this.node.addEventListener("click", () => {
+
+      if(!this.returnIsBussy()) {
+        this.planetFocus()
+      }else{console.log("espera a que se ejecute la accion en el planeta.");}
+    })
   }
 
 
 
   // FUNCIONES --------------------*****************-------------------
 
+  
+  returnIsBussy = () => {
+    if (game1.ship1.isAttacking || game1.ship1.isReloading ){
+      return true
+    }else {return false}
+    
+  }
+  
+  
   planetFocus = () => {
     game1.planetFocused = this
+    // game1.ship1.acoplado = false
   };
 
   fabricarEjercito = () => {

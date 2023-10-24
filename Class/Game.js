@@ -10,10 +10,15 @@ class Game {
       new Planet([900, 55], 2),
       new Planet([700, 200], 3),
       new Planet([500, 350], 2),
-      new Planet([1200, 100], 1)
+      new Planet([1200, 100], 1),
+      new Planet([55, 450], 1),
+      new Planet([350, 600], 3),
+      new Planet([800, 550], 2),
+      new Planet([200, 350], 3),
+      new Planet([600, 400], 2)
     ]
-    this.planetFocused = this.planetArray[0];
-    this.planetFrom = this.planetArray[0];
+    this.planetFocused = this.planetArray[1];
+    this.planetFrom;
 
     this.enemy = new EnemyShip();
     this.ship1 = new Ship();
@@ -21,6 +26,8 @@ class Game {
   }
 
   // Métodos (acciones)
+
+  
 
   gameOver = () => {
     this.isGameOn = false;
@@ -69,7 +76,7 @@ class Game {
   // GAME LOOP --------------------**************************--------------------------
   gameLoop = () => {
     // info de la nave:
-    if (!this.ship1.acoplado){console.log(this.ship1.setTargetDistance(this.planetFocused));}
+    if (!this.ship1.acoplado){this.ship1.setTargetDistance(this.planetFocused);}
     // this.timer++;
     //mover la nave
     if (this.planetFocused !== this.planetFrom) {

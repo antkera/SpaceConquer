@@ -4,11 +4,11 @@ class Ship {
     // this.node.src = "./resources/img/ShipImg.jpg";
     this.node.classList.add("ShipImgPlayer");
     gameBoxNode.append(this.node);
-
+    this.coor = [this.x, this.y]
     this.target ;
     this.isAttacking = false;
     this.isReloading = false;
-    this.alcanceMaximo = 6000;
+    this.alcanceMaximo = 600;
     this.owner = "player";
     this.acoplado = false;
     this.tropas = 400;
@@ -19,7 +19,7 @@ class Ship {
     this.w = 80; //weight
     this.h = 20; //heigth
     this.x = 50; // posicion eje x (desde la derecha)
-    this.y = 5; // posicion eje y (desde la arriba)
+    this.y = 340; // posicion eje y (desde la arriba)
 
     this.node.style.width = `${this.w}px`;
     this.node.style.height = `${this.h}px`;
@@ -46,6 +46,7 @@ class Ship {
     return distance
   };
 
+  
   moverNave = (target) => {
     if (!this.isAttacking && !this.isReloading) {
 
@@ -83,6 +84,7 @@ class Ship {
 
   actualizarTextoInterno = () => {
     this.node.innerText = this.tropas;
+    this.coor = [this.x , this.y]
   };
 
   atacarPlaneta = (target) => {
