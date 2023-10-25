@@ -1,6 +1,7 @@
 class Game {
   constructor() {
     // Propiedades del juego (cosas)
+    this.gameIsPaused = false
     this.randomNumber = Math.floor(Math.random() * 4);
     this.SlowTheGame = 2;
     this.timer = 0;
@@ -30,8 +31,14 @@ class Game {
 
   gameOver = () => {
     this.isGameOn = false;
-    gameBoxNode.style.display = "none";
+    // gameBoxNode.style.display = "none";
     homePageNode.style.display = "flex";
+    this.ship1.node.remove();
+    this.enemy.node.remove();
+    this.planetArray.forEach((eachPlanet) => {eachPlanet.node.remove()})
+    soundOff();
+    
+
   };
 
   decirHola = () => {
@@ -74,10 +81,12 @@ class Game {
       this.gameOver();
     }
   };
+  
 
   // GAME LOOP --------------------**************************--------------------------
   gameLoop = () => {
     this.timer++;
+    
 
     // info de la nave:
     if (!this.ship1.acoplado) {
@@ -100,9 +109,9 @@ class Game {
     // this.enemy.atacarPlaneta(this.planetFocused)
     // this.enemy.decirHola2();
     this.enemy.enemyAutomaticMovement();
-
+console.log("bucle")
     // motor del bucle
-    if (this.isGameOn) {
+    if (this.isGameOn && !this.gameIsPaused) {
       requestAnimationFrame(this.gameLoop);
     }
   };
@@ -111,7 +120,7 @@ class Game {
 // ADDEVENTLISTENERs ------------------------*************************-----------------------------
 document.addEventListener("keydown", (event) => {
   if (event.code === "Escape") {
-    this.gameOver();
+    game1.gameOver();
   }
 });
 document.addEventListener("keydown", (event) => {

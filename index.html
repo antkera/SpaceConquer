@@ -15,13 +15,20 @@
     <div id="mainPage" class="flexed">
 
         <section id="homePage" class="sizeL">
-            <div class="divStart"><button id="start-btn">Start!</button></div>
+            <div class="divStart "><button class="pulse" id="start-btn">Start!</button></div>
 
         </section>
         <section id="gameSection" class="sizeL">
             <div id="space" class="gameBox">
-                Game section:
-                <!-- <audio class="audioDeFondo" src="./resources/audio/big+space.mp3" autoplay></audio> -->
+                <div class="divControls">
+                    <input type="button" value="🔈" id="play" class="play">
+                    <input type="button" value="🔊" id="pause" class="pause">
+                    <input type="button" value="PAUSE" id="pauseGame" Class="pause">
+                    <input type="button" value="PLAY" id="pausedGame" class="play">
+                </div>
+
+
+
                 <audio id="audio" loop controls>
                     <source type="audio/wav" src="./resources/audio/big+space.mp3">
                 </audio>

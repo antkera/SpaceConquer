@@ -10,6 +10,8 @@ class EnemyShip extends Ship {
     this.node.style.top = `${this.y}px`;
     this.shipSpeed = 1;
     this.owner = "enemy";
+    this.ownColorRGB = "255, 0, 0"
+
 
     // IA
 

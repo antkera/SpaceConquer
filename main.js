@@ -5,7 +5,10 @@ let planet1node;
 const gameBoxNode = document.querySelector("#gameSection");
 const homePageNode = document.querySelector("#homePage");
 const audioNode = document.querySelector("#audio");
-
+const soundButtonNode = document.querySelector("#play");
+const muteButtonNode = document.querySelector("#pause");
+const pauseGameButtonNode = document.querySelector("#pauseGame");
+const pausedGameButtonNode = document.querySelector("#pausedGame");
 
 // console.log(homePageNode);
 let game1;
@@ -19,17 +22,44 @@ const startGame = () => {
   // console.log("estoy en la funcion startGame");
 };
 
-gameOver = () => {
-  game1.isGameOn = false;
-  gameBoxNode.style.display = "none";
-  homePageNode.style.display = "flex";
-};
+// gameOver = () => {
+//   game1.isGameOn = false;
+//   gameBoxNode.style.display = "none";
+//   homePageNode.style.display = "flex";
+// };
 
-const decirHola = () => {console.log("hola en main");}
+const pauseFunc = () => {
+
+  game1.gameIsPaused = true;
+  pauseGameButtonNode.style.display = "none";
+  pausedGameButtonNode.style.display = "flex";
+};
+const pausedFunc = () => {
+
+  game1.gameIsPaused = false;
+  game1.gameLoop();
+  pausedGameButtonNode.style.display = "none";
+  pauseGameButtonNode.style.display = "flex";
+};
+const soundOn = () => {
+  
+  audioNode.play();
+  soundButtonNode.style.display = "none";
+  muteButtonNode.style.display = "flex";
+};
+const soundOff = () => {
+  audioNode.pause();
+  muteButtonNode.style.display = "none";
+  soundButtonNode.style.display = "flex";
+};
 
 //   addEventListener--------------
 
 startButtonNode.addEventListener("click", startGame);
+soundButtonNode.addEventListener("click", () => {soundOn()});
+muteButtonNode.addEventListener("click", () => {soundOff()});
+pauseGameButtonNode.addEventListener("click", () => {pauseFunc()});
+pausedGameButtonNode.addEventListener("click", () => {pausedFunc()});
 
 // planet1node.addEventListener("click", decirHola);
 
@@ -42,4 +72,3 @@ startButtonNode.addEventListener("click", startGame);
 // mainShipLaunch = (planeta , nave) => {
 //   nave.moverNave(planet)
 // }
-

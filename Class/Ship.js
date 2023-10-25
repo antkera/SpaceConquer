@@ -14,6 +14,7 @@ class Ship {
     this.tropas = 400;
     this.shipSpeed = 2;
     this.textoInterno = `${this.tropas}`;
+    this.ownColorRGB = "35, 238, 133"
     // this.target = game1.planetArray[0];
 
     this.w = 120; //weight
@@ -25,6 +26,7 @@ class Ship {
     this.node.style.height = `${this.h}px`;
     this.node.style.left = `${this.x}px`;
     this.node.style.top = `${this.y}px`;
+    this.node.style.borderRadius = "1000px"
   }
 
   //funciones:
@@ -105,6 +107,7 @@ class Ship {
         // console.log("atacando");
       }
       if (target.tropas > 0 && this.tropas <= 0) {
+        
         target.node.style.boxShadow = `inset 0 0 0 ${0}px rgba(184, 19, 19, 0.6)`;
         this.isAttacking = false;
       }
@@ -118,10 +121,13 @@ class Ship {
       this.tropas++;
       this.isAttacking = false;
       this.isReloading = true;
+      
+      this.node.style.boxShadow = `inset 0 0 0 ${this.tropas % 20}px rgba(${this.ownColorRGB}, 0.6)`;
     }
     if (target.owner === this.owner && this.acoplado && target.tropas <= 0) {
       this.isAttacking = false;
       this.isReloading = false;
+      this.node.style.boxShadow = `inset 0 0 0 ${0}px rgba(184, 19, 19, 0.6)`;
     }
   };
 

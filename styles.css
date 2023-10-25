@@ -1,10 +1,35 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
 #start-btn {
-  background-color: green;
-  color: white;
-  padding: 20px;
-  font-size: 20px;
+  font-family: 'Press Start 2P';
+  background: none;
+  /* background-color: #8dedd8; */
+  background-size: cover;
+  color:black;
+  padding: 30px;
+  padding-right: 20px;
+  font-size: 40px;
   margin-top: 40px;
-  border-radius: 10px; 
+  border-radius: 1000px; 
+  border-color: rgb(0, 3, 87);
+  border-width: 0px;
+  transition: 0.3;
+}
+#start-btn:hover {
+  font-family: 'Press Start 2P';
+  background: none;
+  background-color: #8dedd8;
+  background-size: cover;
+  color:black;
+  padding: 30px;
+  padding-right: 20px;
+  font-size: 40px;
+  margin-top: 40px;
+  border-radius: 1000px; 
+  border-color: #8dedd8;
+  border-width: 10px;
   
 }
 
@@ -27,6 +52,19 @@ body {
   position: relative;
   flex-direction: column;
 }
+.play{
+  font-family: 'Press Start 2P';
+  padding: 5px 10px;
+  display: none;
+  border-radius: 150px;
+  background-color: rgb(222, 139, 139);
+}
+.pause{
+  font-family: 'Press Start 2P';
+  padding: 5px 10px;
+  border-radius: 150px;
+  background-color: rgb(81, 234, 70);
+}
 #space {
   /* width: 1980px; */
   height: 1900px;
@@ -48,8 +86,12 @@ body {
 }
 .divStart{
   display: flex;
-  /* flex-direction: row; */
-  /* justify-content: center; */
+  align-items: center;
+}
+.divControls{
+  display: flex;
+  
+  justify-content: center;
   align-items: center;
   
 }
@@ -83,6 +125,7 @@ body {
 
 #audio{
   display: none;
+  
   }
 
 
@@ -91,6 +134,9 @@ body {
   border-style: solid;
   border-width: 0;
   border-bottom-width: 5px;
+  border-radius: 1000px;
+  
+  /* border-bottom-right-radius: 30px; */
 }
 .ShipImgPlayer{
   font-size: 25px;
