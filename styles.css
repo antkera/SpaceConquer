@@ -15,8 +15,10 @@ body {
 
   display: flex;
   justify-content: center;
-  
-  background-color: aqua;
+  background-image: url(./resources/img/outerspace-6.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgb(13, 3, 56);
 }
 #gameSection {
   display: none;
@@ -27,12 +29,14 @@ body {
 }
 #space {
   /* width: 1980px; */
-  height: 1080px;
-
-
-  background-image: url("./resources/img/space.jpg");
+  height: 1900px;
+  background-image: url("./resources/img/space\ green.jpg");
   background-repeat: no-repeat;
   background-size:cover;
+}
+
+.audioDeFondo{
+  
 }
 
 #gameOverSection {
@@ -69,13 +73,19 @@ body {
   position: absolute;
   background-color: red;
   /* border-image: round; */
-  background-image: url(./resources/img/planetaHielo1.jpg);
-  border-color: yellow;
+  background-image: url(./resources/img/planetaTTierra.jpg);
+  border-color: rgb(35, 238, 133);
   border-width: 5px;
   border-style: solid;
   background-size:cover;
 
 }
+
+#audio{
+  display: none;
+  }
+
+
 .ShipImg{
   position: absolute;
   border-style: solid;
@@ -87,24 +97,21 @@ body {
   text-align: end;
   color: blue;
   position: absolute;
-  /* border-style: solid; */
-  /* border-width: 0;
-  border-bottom-width: 5px; */
-  background-image: url(./resources/img/ShipImg.jpg);
-  background-size:cover;
+  background-image: url(./resources/img/navePro.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 
 }
+
 .enemyShip{
   font-size: 25px;
-  text-align: end;
+  text-align: end ;
   color: red;
   position: absolute;
-  /* border-style: solid; */
-  /* border-width: 0;
-  border-bottom-width: 5px; */
-  background-image: url(./resources/img/ShipImg.jpg);
-  background-size:cover;
-  box-shadow: inset 0 0 0 5px rgba(184, 19, 19, 0.3);
+  background-image: url(./resources/img/ovni.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* box-shadow: inset 0 0 0 500px rgba(184, 19, 19, 0.3); */
 
 }
 

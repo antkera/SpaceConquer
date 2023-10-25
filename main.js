@@ -4,10 +4,14 @@ const startButtonNode = document.querySelector("#start-btn");
 let planet1node;
 const gameBoxNode = document.querySelector("#gameSection");
 const homePageNode = document.querySelector("#homePage");
+const audioNode = document.querySelector("#audio");
+
+
 // console.log(homePageNode);
 let game1;
 
 const startGame = () => {
+  audioNode.play();
   game1 = new Game();
   gameBoxNode.style.display = "flex";
   homePageNode.style.display = "none";

@@ -3,8 +3,9 @@ class EnemyShip extends Ship {
     super();
     this.node.classList.remove("ShipImgPlayer");
     this.node.classList.add("enemyShip"); //crear en CSS
-    this.x = 1200;
+    this.x = 1600;
     this.y = 200;
+
     this.node.style.left = `${this.x}px`;
     this.node.style.top = `${this.y}px`;
     this.shipSpeed = 1;
@@ -37,24 +38,26 @@ class EnemyShip extends Ship {
   };
 
   findNearSuitablePlanet = (planetArr) => {
+    // let randomNumber = Math.floor(Math.random()*20)/100;
+    // console.log(randomNumber);
     let planet;
     let distance = this.alcanceMaximo;
     planetArr.forEach((eachPlanet) => {
       if (
         this.setTargetDistance(eachPlanet) < distance &&
-        eachPlanet.tropas < this.tropas *0.7 &&
+        eachPlanet.tropas < this.tropas * 0.7 /*(1+randomNumber)*/ &&
         eachPlanet.tropas > 0 &&
         eachPlanet.owner !== "enemy"
       ) {
         distance = this.setTargetDistance(eachPlanet);
         planet = eachPlanet;
-      } 
+      }
       // else if (){planet = game1.planetArray[6]}
     });
-     if (!planet){
-      return this.findNearSuitablePlanetToReload(planetArr)
-     }
-   
+    if (!planet) {
+      return this.findNearSuitablePlanetToReload(planetArr);
+    }
+
     // console.log(planet)
     return planet;
   };
@@ -71,15 +74,13 @@ class EnemyShip extends Ship {
       ) {
         tropas = eachPlanet.tropas;
         planet = eachPlanet;
-        
-      } 
-      
-      
-    })
+      }
+    });
 
-    if(!planet){
-    return planetArr[6] };
-   
+    if (!planet) {
+      return planetArr[2];
+    }
+
     // console.log(planet)
     return planet;
   };
@@ -91,16 +92,13 @@ class EnemyShip extends Ship {
       console.log("seting Target");
       return this.target;
     }
-  }
-
+  };
 
   enemyAutomaticMovement = () => {
-    
-    this.moverNave(this.setTarget())
+    this.moverNave(this.setTarget());
     // console.log(this);
-    this.atacarPlaneta(this.target)
-
-  }
+    this.atacarPlaneta(this.target);
+  };
   // let randomNumber = Math.floor(Math.random() * game1.planetArray.length);
   // let target = game1.planetArray[randomNumber];
   // console.log(`the target is ${game1.planetArray[randomNumber].tropas}`);
