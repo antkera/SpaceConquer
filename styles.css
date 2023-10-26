@@ -1,36 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
-  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-
+.título {
+  color: rgba(0, 0, 68, 0.937);
+  font-family: "Press Start 2P";
+  font-size: 80px;
+  text-shadow: 2px 2px #ff0000;
+}
+.instrucciones {
+  font-size: 20px;
+  box-shadow: 10px 10 px #ff0000;
+  border-style: double;
+  border-width: 10px;
+  padding-bottom: 15px;
+  padding-right: 15px;
+  border-radius: 20px;
+  /* margin-top: -200px; */
+  /* transition: 2s; */
+  transition-duration: 3s;
+  background-color: rgba(250, 250, 250, 0.397);
+}
+.instrucciones:hover {
+  font-size: 25px;
+  background-color: rgba(0, 255, 255, 0.361);
+  border-style: double;
+  border-width: 20px;
+  padding: 40px 70px 50px 100px;
+  border-radius: 200px;
+  /* margin-top: -200px; */
+  transition: 2s;
+}
+.divStart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .start-btn {
-  font-family: 'Press Start 2P';
+  font-family: "Press Start 2P";
   background: none;
   /* background-color: #8dedd8; */
   background-size: cover;
-  color:black;
+  color: black;
   padding: 30px;
   padding-right: 20px;
   font-size: 40px;
-  margin-top: 40px;
-  border-radius: 1000px; 
+  margin-top: 10px;
+  border-radius: 1000px;
   border-color: rgb(0, 3, 87);
   border-width: 0px;
-  transition: 0.3;
+  transition-duration: 1s;
+
+  text-shadow: 2px 2px #000dff;
 }
 .start-btn:hover {
-  font-family: 'Press Start 2P';
+  font-family: "Press Start 2P";
   background: none;
   background-color: #8dedd8;
   background-size: cover;
-  color:black;
+  color: black;
   padding: 30px;
   padding-right: 20px;
   font-size: 40px;
   margin-top: 40px;
-  border-radius: 1000px; 
+  border-radius: 1000px;
   border-color: #8dedd8;
   border-width: 10px;
-  
 }
 
 body {
@@ -38,7 +72,6 @@ body {
   margin: 0;
 }
 #homePage {
-
   display: flex;
   justify-content: center;
   background-image: url(./resources/img/outerspace-6.gif);
@@ -47,93 +80,91 @@ body {
   background-repeat: no-repeat;
   background-color: rgb(13, 3, 56);
 }
+
 #gameSection {
   display: none;
   background-color: black;
-  
+  /* background-image: url("./resources/img/space\ green.jpg");
+  background-repeat: no-repeat;
+  background-size:cover; */
+
   color: red;
   position: relative;
   flex-direction: column;
 }
-.play{
-  font-family: 'Press Start 2P';
+
+.play {
+  font-family: "Press Start 2P";
   padding: 5px 10px;
   display: none;
   border-radius: 150px;
   background-color: rgb(222, 139, 139);
 }
-.pause{
-  font-family: 'Press Start 2P';
+
+.pause {
+  font-family: "Press Start 2P";
   padding: 5px 10px;
   border-radius: 150px;
   background-color: rgb(81, 234, 70);
 }
+
 #space {
-  /* width: 1980px; */
   height: 1900px;
   background-image: url("./resources/img/space\ green.jpg");
   background-repeat: no-repeat;
-  background-size:cover;
-  /* background-attachment: fixed; */
-
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-.audioDeFondo{
-  
+.audioDeFondo {
 }
 
 #gameOverSection {
-  background-image: url(/resources/img/espacioConPlanetas.jpg);
-  display:none;
+  background-image: url(./resources/img/espacioConPlanetas.jpg);
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-attachment: fixed;
   background-size: cover;
-  /* background-color: rgb(47, 21, 131); */
-  /* color: red; */
 }
+
 #gameOverSection h1 {
-  padding: 50PX;
-  border-style:solid ;
+  padding: 50px;
+  border-style: solid;
   border-radius: 2000px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-font-size: 200px;
+  font-size: 200px;
   background-color: rgba(74, 13, 8, 0.254);
   color: rgb(241, 0, 0);
-}
-#retry{
-  color: rgba(15, 15, 255, 0.802);
-  border-top-width: 20px;
-  border-width: 3px;
-  
+
+  text-shadow: 5px 5px black;
 }
 
-.divStart{
-  display: flex;
-  align-items: center;
-  
+#retry {
+  color: rgba(0, 0, 0);
+  border-top-width: 20px;
+  border-width: 3px;
+  text-shadow: none;
 }
-.divControls{
+
+.divControls {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 .flexed {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
 }
 .sizeL {
-  /* width: 1800px; */
   height: 1080px;
 }
 
-.PlanetImgPlayer{
+.PlanetImgPlayer {
   color: black;
   font-size: 25px;
   text-align: center;
@@ -141,31 +172,26 @@ font-size: 200px;
   border-radius: 1000px;
   position: absolute;
   background-color: red;
-  /* border-image: round; */
   background-image: url(./resources/img/planetaTTierra.jpg);
   border-color: rgb(35, 238, 133);
   border-width: 5px;
   border-style: solid;
-  background-size:cover;
-
+  background-size: cover;
 }
 
-#audio{
+.audio {
   display: none;
-  
-  }
+}
 
-
-.ShipImg{
+.ShipImg {
   position: absolute;
   border-style: solid;
   border-width: 0;
   border-bottom-width: 5px;
   border-radius: 1000px;
-  
-  /* border-bottom-right-radius: 30px; */
 }
-.ShipImgPlayer{
+
+.ShipImgPlayer {
   font-size: 25px;
   text-align: end;
   color: blue;
@@ -173,34 +199,14 @@ font-size: 200px;
   background-image: url(./resources/img/navePro.png);
   background-size: contain;
   background-repeat: no-repeat;
-
 }
 
-.enemyShip{
+.enemyShip {
   font-size: 25px;
-  text-align: end ;
+  text-align: end;
   color: red;
   position: absolute;
   background-image: url(./resources/img/ovni.png);
   background-size: contain;
   background-repeat: no-repeat;
-  /* box-shadow: inset 0 0 0 500px rgba(184, 19, 19, 0.3); */
-
-}
-
-
-#PlanetaDePrueba {
-  display: none;
-
-
-    background-image: url(./resources/img/planetaHielo1.jpg);
-    background-position: center;
-    background-size: cover;
-    height: 50px;
-    width: 50px;
-    
-    position: absolute;
-    top: 30%;
-    left: 90%;
-
 }

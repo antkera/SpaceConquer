@@ -1,7 +1,6 @@
 class Ship {
   constructor() {
     this.node = document.createElement("div");
-    // this.node.src = "./resources/img/ShipImg.jpg";
     this.node.classList.add("ShipImgPlayer");
     gameBoxNode.append(this.node);
     this.coor = [this.x, this.y];
@@ -14,7 +13,7 @@ class Ship {
     this.tropas = 400;
     this.shipSpeed = 2;
     this.textoInterno = `${this.tropas}`;
-    this.ownColorRGB = "35, 238, 133"
+    this.ownColorRGB = "35, 238, 133";
     // this.target = game1.planetArray[0];
 
     this.w = 120; //weight
@@ -26,7 +25,7 @@ class Ship {
     this.node.style.height = `${this.h}px`;
     this.node.style.left = `${this.x}px`;
     this.node.style.top = `${this.y}px`;
-    this.node.style.borderRadius = "1000px"
+    this.node.style.borderRadius = "1000px";
   }
 
   //funciones:
@@ -50,24 +49,21 @@ class Ship {
 
   moverNave = (target) => {
     if (!this.isAttacking && !this.isReloading) {
-      // console.log(this);
-      // console.log(planetaFocused);
-
-      if (this.x === target.x && this.y === target.y ||
-        this.x -1 === target.x && this.y === target.y||
-        this.x === target.x && this.y -1 === target.y||
-        this.x +1 === target.x && this.y === target.y||
-        this.x === target.x && this.y +1 === target.y||
-        this.x +1 === target.x && this.y +1 === target.y||
-        this.x -1 === target.x && this.y -1 === target.y||
-        this.x === target.x && this.y === target.y ) {
+      if (
+        (this.x === target.x && this.y === target.y) ||
+        (this.x - 1 === target.x && this.y === target.y) ||
+        (this.x === target.x && this.y - 1 === target.y) ||
+        (this.x + 1 === target.x && this.y === target.y) ||
+        (this.x === target.x && this.y + 1 === target.y) ||
+        (this.x + 1 === target.x && this.y + 1 === target.y) ||
+        (this.x - 1 === target.x && this.y - 1 === target.y) ||
+        (this.x === target.x && this.y === target.y)
+      ) {
         this.acoplado = true;
-        // console.log(`acoplado = ${this.acoplado}`);
 
         //meter aquí funcion desembarcar ejercitos.
         return target;
       } else {
-        // console.log("nave en camino");
         this.acoplado = false;
         if (target.x > this.x) {
           this.x += this.shipSpeed;
@@ -83,7 +79,6 @@ class Ship {
         }
         this.node.style.left = `${this.x}px`;
         this.node.style.top = `${this.y}px`;
-        // console.log(`acoplado = ${this.acoplado}`);
       }
     }
   };
@@ -104,10 +99,8 @@ class Ship {
         target.node.style.boxShadow = `inset 0 0 0 ${
           target.tropas / 5
         }px rgba(184, 19, 19, 0.6)`;
-        // console.log("atacando");
       }
       if (target.tropas > 0 && this.tropas <= 0) {
-        
         target.node.style.boxShadow = `inset 0 0 0 ${0}px rgba(184, 19, 19, 0.6)`;
         this.isAttacking = false;
       }
@@ -121,8 +114,10 @@ class Ship {
       this.tropas++;
       this.isAttacking = false;
       this.isReloading = true;
-      
-      this.node.style.boxShadow = `inset 0 0 0 ${this.tropas % 20}px rgba(${this.ownColorRGB}, 0.6)`;
+
+      this.node.style.boxShadow = `inset 0 0 0 ${this.tropas % 20}px rgba(${
+        this.ownColorRGB
+      }, 0.6)`;
     }
     if (target.owner === this.owner && this.acoplado && target.tropas <= 0) {
       this.isAttacking = false;
@@ -130,8 +125,4 @@ class Ship {
       this.node.style.boxShadow = `inset 0 0 0 ${0}px rgba(184, 19, 19, 0.6)`;
     }
   };
-
-  //rellenarBarracas
-  //desembarcarEnPlaneta
-  //retirada
 }

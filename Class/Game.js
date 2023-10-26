@@ -1,7 +1,7 @@
 class Game {
   constructor() {
     // Propiedades del juego (cosas)
-    this.gameIsPaused = false
+    this.gameIsPaused = false;
     this.randomNumber = Math.floor(Math.random() * 4);
     this.SlowTheGame = 2;
     this.timer = 0;
@@ -31,56 +31,69 @@ class Game {
   // Métodos (acciones)
 
   gameOver = () => {
+    looseAudioNode.currentTime = 0;
+    looseAudioNode.play();
     this.isGameOn = false;
     gameBoxNode.style.display = "none";
     gameOverSectionNode.style.display = "flex";
     this.ship1.node.remove();
     this.enemy.node.remove();
-    this.planetArray.forEach((eachPlanet) => {eachPlanet.node.remove()})
+    this.planetArray.forEach((eachPlanet) => {
+      eachPlanet.node.remove();
+    });
     soundOff();
+    youWinYouLooseNode.innerText = "GAME OVER";
+    youWinYouLooseNode.style.color = "rgb(241, 0, 0)";
+    youWinYouLooseNode.style.backgroundColor = "rgba(74, 13, 8, 0.254)";
+    retryButtonNode.innerText = "Retry";
   };
+
   youWin = () => {
+    winAudioNode.currentTime = 0;
+    winAudioNode.play();
     this.isGameOn = false;
     gameBoxNode.style.display = "none";
     gameOverSectionNode.style.display = "flex";
     this.ship1.node.remove();
     this.enemy.node.remove();
-    this.planetArray.forEach((eachPlanet) => {eachPlanet.node.remove()})
+    this.planetArray.forEach((eachPlanet) => {
+      eachPlanet.node.remove();
+    });
     soundOff();
 
 
-  } 
+    retryButtonNode.innerText = "Play again";
+    youWinYouLooseNode.innerHTML = "YOU WIN !!!";
+    youWinYouLooseNode.style.color = "rgb(15, 15, 255)";
+    youWinYouLooseNode.style.backgroundColor = "rgba(15, 15, 255, 0.100)";
+  };
   checkIfGameOver = () => {
     let playerPlanets = 0;
     let enemyPlanets = 0;
-    this.planetArray.forEach ((each) => {
-      if (each.owner === "player"){
+    this.planetArray.forEach((each) => {
+      if (each.owner === "player") {
         playerPlanets++;
-      }else if (each.owner === "enemy"){
+      } else if (each.owner === "enemy") {
         enemyPlanets++;
       }
+    });
 
-    })
-    console.log(playerPlanets , enemyPlanets);
-    if (playerPlanets === 0 &&  this.ship1.tropas === 0){
+    if (playerPlanets === 0 && this.ship1.tropas === 0) {
       this.gameOver();
-    }else if (enemyPlanets <= 1 && playerPlanets > this.planetArray.length -2){
+    } else if (
+      enemyPlanets <= 1 &&
+      playerPlanets > this.planetArray.length - 2
+    ) {
       this.youWin();
     }
-
-
-  }
-
-  decirHola = () => {
-    console.log("hola en Game");
   };
+
   gameShipLaunch = (planeta) => {
-    // console.log("gameShipLaunch");
     this.ship1.moverNave(this.planet2);
   };
 
   loopMoverNave = (planeta) => {
-    this.ship1.target = this.planetFocused; 
+    this.ship1.target = this.planetFocused;
     this.ship1.moverNave(planeta);
   };
 
@@ -97,66 +110,46 @@ class Game {
       elm.fabricarEjercito();
     });
   };
+
   checkCongratulations = () => {};
-  // checkGameOver = () => {
-  //   let gameOver = false;
-  //   this.planetArray.forEach((eachPlanet) => {
-  //     if (eachPlanet.owner === "enemy") {
-  //       gameOver = true;
-  //     } else {
-  //       gameOver = false;
-  //     }
-  //   });
-  //   if (gameOver === true) {
-  //     this.gameOver();
-  //   }
-  // };
-  
 
-  // GAME LOOP --------------------**************************--------------------------
-  gameLoop = () => {
-    this.timer++;
-
-    
-
-    // info de la nave:
-    if (!this.ship1.acoplado) {
-      this.ship1.setTargetDistance(this.planetFocused);
-    }
-    // this.timer++;
-    //mover la nave
-    if (this.planetFocused !== this.planetFrom) {
-      this.planetFrom = this.ship1.moverNave(this.planetFocused);
-    }
-    // this.checkGameOver();
-    this.checkIfGameOver();
-
-    // IA
-    // this.enemy.setTargetDistance();
-
-    // ejercito
-    this.renderAll();
-    this.fabricarEjercitosPlanetas();
-    this.ship1.atacarPlaneta(this.planetFocused);
-    // this.enemy.atacarPlaneta(this.planetFocused)
-    // this.enemy.decirHola2();
-    this.enemy.enemyAutomaticMovement();
-console.log("bucle")
-    // motor del bucle
-    if (this.isGameOn && !this.gameIsPaused) {
-      requestAnimationFrame(this.gameLoop);
-    }
-  };
-}
+  // GAME LOOP -------------*********************************-------------//
+  gameLoop = () => {                                                     //
+    this.timer++;                                                       //
+    // info de la nave:                                                //
+    if (!this.ship1.acoplado) {                                       //
+      this.ship1.setTargetDistance(this.planetFocused);              //
+    }                                                               //
+    //mover la nave                                                //
+    if (this.planetFocused !== this.planetFrom) {                 //
+      this.planetFrom = this.ship1.moverNave(this.planetFocused);//
+    }                                                           //
+    // check                                                   //
+    this.checkIfGameOver();                                   //
+                                                             //
+    // ejercito                                             //
+    this.renderAll();                                      //
+    this.fabricarEjercitosPlanetas();                     //
+    this.ship1.atacarPlaneta(this.planetFocused);        //
+                                                        //
+    // IA                                              //
+    this.enemy.enemyAutomaticMovement();              //
+                                                     //
+    // motor del bucle                              //
+    if (this.isGameOn && !this.gameIsPaused) {     //
+      requestAnimationFrame(this.gameLoop);       //
+    }                                            //
+  };                                            //
+}//---------------***************--------------//
 
 // ADDEVENTLISTENERs ------------------------*************************-----------------------------
 document.addEventListener("keydown", (event) => {
-  if (event.code === "Escape") {
+  if (event.code === "KeyP") {
     game1.gameOver();
   }
 });
 document.addEventListener("keydown", (event) => {
-  if (event.code === "Space") {
-    console.log(Espacio);
+  if (event.code === "KeyO") {
+    game1.youWin();
   }
 });

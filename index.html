@@ -15,7 +15,21 @@
     <div id="mainPage" class="flexed">
 
         <section id="homePage" class="sizeL">
-            <div class="divStart "><button class="start-btn" id="start-btn">Start!</button></div>
+            <div class="divStart ">
+                <h1 class="título">SPACE CONQUER</h1>
+                <ul class="instrucciones">
+                    <p><STRONG>INSTRUCCIONES:</STRONG></p>
+                    <li>Para ganar debes capturar todos los planetas <b>excepto</b> uno </li>
+                    <li>Haz <b>click</b> en el planeta al que quieras ir</li>
+                    <li>Debes tener en cuenta que no puedes abandonar un planeta si estás atacándolo</li>
+                    <li>Tampoco podrás abandonar el planeta si estás recargando tus tropas</li>
+                    <li>Perderás si te quedas sin planetas y sin tropas, ¡ten cuidado!</li>
+                </ul>
+                <button class="start-btn" id="start-btn">Start!</button>
+            </div>
+            <audio id="startAudio" class="audio" loop controls>
+                <source type="audio/wav" src="./resources/audio/startGame.mp3">
+            </audio>
 
         </section>
         <section id="gameSection" class="sizeL">
@@ -27,10 +41,8 @@
                     <input type="button" value="PLAY" id="pausedGame" class="play">
                 </div>
 
-
-
-                <audio id="audio" loop controls>
-                    <source type="audio/wav" src="./resources/audio/big+space.mp3">
+                <audio id="gameAudio" class="audio" loop controls>
+                    <source type="audio/wav" src="./resources/audio/chiptune-grooving-142242.mp3">
                 </audio>
 
             </div>
@@ -41,26 +53,16 @@
             <div class="divStart">
                 <button class="start-btn " id="retry">retry!</button>
             </div>
-            
+            <audio id="looseAudio" class="audio" loop controls>
+                <source type="audio/wav" src="./resources/audio/game-over-134053.mp3">
+            </audio>
+            <audio id="winAudio" class="audio" loop controls>
+                <source type="audio/wav" src="./resources/audio/youWin.mp3">
+            </audio>
 
         </section>
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
