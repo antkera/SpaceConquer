@@ -4,17 +4,29 @@ const startButtonNode = document.querySelector("#start-btn");
 let planet1node;
 const gameBoxNode = document.querySelector("#gameSection");
 const homePageNode = document.querySelector("#homePage");
+const gameOverSectionNode = document.querySelector("#gameOverSection");
 const audioNode = document.querySelector("#audio");
 const soundButtonNode = document.querySelector("#play");
 const muteButtonNode = document.querySelector("#pause");
 const pauseGameButtonNode = document.querySelector("#pauseGame");
 const pausedGameButtonNode = document.querySelector("#pausedGame");
+const retryButtonNode = document.querySelector("#retry");
 
 // console.log(homePageNode);
 let game1;
 
+const retryGame = () => {
+  audioNode.currentTime = 0;
+    gameOverSectionNode.style.display = "none";
+    soundButtonNode.style.display = "none";
+  muteButtonNode.style.display = "flex";
+  pausedGameButtonNode.style.display = "none";
+  pauseGameButtonNode.style.display = "flex";
+    startGame();
+}
 const startGame = () => {
   audioNode.play();
+  audioNode.volume = 0.3
   game1 = new Game();
   gameBoxNode.style.display = "flex";
   homePageNode.style.display = "none";
@@ -56,10 +68,12 @@ const soundOff = () => {
 //   addEventListener--------------
 
 startButtonNode.addEventListener("click", startGame);
-soundButtonNode.addEventListener("click", () => {soundOn()});
-muteButtonNode.addEventListener("click", () => {soundOff()});
-pauseGameButtonNode.addEventListener("click", () => {pauseFunc()});
-pausedGameButtonNode.addEventListener("click", () => {pausedFunc()});
+soundButtonNode.addEventListener("click",soundOn);
+muteButtonNode.addEventListener("click", soundOff);
+pauseGameButtonNode.addEventListener("click", pauseFunc);
+pausedGameButtonNode.addEventListener("click", pausedFunc);
+retryButtonNode.addEventListener("click", retryGame);
+
 
 // planet1node.addEventListener("click", decirHola);
 

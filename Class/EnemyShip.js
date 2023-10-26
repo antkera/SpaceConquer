@@ -5,6 +5,7 @@ class EnemyShip extends Ship {
     this.node.classList.add("enemyShip"); //crear en CSS
     this.x = 1600;
     this.y = 200;
+    this.shipSpeed = 2;
 
     this.node.style.left = `${this.x}px`;
     this.node.style.top = `${this.y}px`;

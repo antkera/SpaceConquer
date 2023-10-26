@@ -10,8 +10,9 @@ class Game {
       new Planet([110, 350], 1),
       new Planet([110, 450], 1),
       new Planet([1600, 100], 1),
+      new Planet([1600, 525], 1),
       new Planet([10, 5], 2),
-      new Planet([1100, 725], 6),
+      new Planet([1100, 725], 5),
       new Planet([1200, 350], 2),
       new Planet([1100, 550], 2),
       new Planet([900, 400], 2),
@@ -31,15 +32,44 @@ class Game {
 
   gameOver = () => {
     this.isGameOn = false;
-    // gameBoxNode.style.display = "none";
-    homePageNode.style.display = "flex";
+    gameBoxNode.style.display = "none";
+    gameOverSectionNode.style.display = "flex";
     this.ship1.node.remove();
     this.enemy.node.remove();
     this.planetArray.forEach((eachPlanet) => {eachPlanet.node.remove()})
     soundOff();
-    
-
   };
+  youWin = () => {
+    this.isGameOn = false;
+    gameBoxNode.style.display = "none";
+    gameOverSectionNode.style.display = "flex";
+    this.ship1.node.remove();
+    this.enemy.node.remove();
+    this.planetArray.forEach((eachPlanet) => {eachPlanet.node.remove()})
+    soundOff();
+
+
+  } 
+  checkIfGameOver = () => {
+    let playerPlanets = 0;
+    let enemyPlanets = 0;
+    this.planetArray.forEach ((each) => {
+      if (each.owner === "player"){
+        playerPlanets++;
+      }else if (each.owner === "enemy"){
+        enemyPlanets++;
+      }
+
+    })
+    console.log(playerPlanets , enemyPlanets);
+    if (playerPlanets === 0 &&  this.ship1.tropas === 0){
+      this.gameOver();
+    }else if (enemyPlanets <= 1 && playerPlanets > this.planetArray.length -2){
+      this.youWin();
+    }
+
+
+  }
 
   decirHola = () => {
     console.log("hola en Game");
@@ -50,7 +80,7 @@ class Game {
   };
 
   loopMoverNave = (planeta) => {
-    this.ship1.target = this.planetFocused;
+    this.ship1.target = this.planetFocused; 
     this.ship1.moverNave(planeta);
   };
 
@@ -68,24 +98,25 @@ class Game {
     });
   };
   checkCongratulations = () => {};
-  checkGameOver = () => {
-    let gameOver = false;
-    this.planetArray.forEach((eachPlanet) => {
-      if (eachPlanet.owner === "enemy") {
-        gameOver = true;
-      } else {
-        gameOver = false;
-      }
-    });
-    if (gameOver === true) {
-      this.gameOver();
-    }
-  };
+  // checkGameOver = () => {
+  //   let gameOver = false;
+  //   this.planetArray.forEach((eachPlanet) => {
+  //     if (eachPlanet.owner === "enemy") {
+  //       gameOver = true;
+  //     } else {
+  //       gameOver = false;
+  //     }
+  //   });
+  //   if (gameOver === true) {
+  //     this.gameOver();
+  //   }
+  // };
   
 
   // GAME LOOP --------------------**************************--------------------------
   gameLoop = () => {
     this.timer++;
+
     
 
     // info de la nave:
@@ -98,6 +129,7 @@ class Game {
       this.planetFrom = this.ship1.moverNave(this.planetFocused);
     }
     // this.checkGameOver();
+    this.checkIfGameOver();
 
     // IA
     // this.enemy.setTargetDistance();
