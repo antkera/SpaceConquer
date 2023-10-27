@@ -74,15 +74,7 @@ Example:
 - gameShipLaunch ()
 - loopMoverNave ()
 - fabricarEjercitosPlanetas ()
-- gameLoop ()
-- gameLoop ()
-- gameLoop ()
-- gameLoop ()
-- gameLoop ()
-- gameLoop ()
-- gameLoop ()
-- gameLoop ()
-- gameLoop ()
+
 
 ## Planet.js
 
@@ -140,7 +132,7 @@ Example:
 
 ### Slides
 
-[Link]()
+[Link](https://docs.google.com/presentation/d/1pvfLSwGpJpXhXrTlodnXPMIVNgEoUP9xbHjudrx7YwI/edit?usp=drive_link)
 
 ## Deploy
 
