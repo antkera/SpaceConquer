@@ -6,35 +6,18 @@ class EnemyShip extends Ship {
     this.x = 1600;
     this.y = 200;
     this.shipSpeed = 2;
-
     this.node.style.left = `${this.x}px`;
     this.node.style.top = `${this.y}px`;
     this.shipSpeed = 1;
     this.owner = "enemy";
     this.ownColorRGB = "255, 0, 0";
-
-    // IA
     this.target;
     this.targetDistance = 0;
   }
 
-  setTargetDistance = (target) => {
-    let distance = 0;
-    if (target.x > this.x) {
-      distance += target.x - this.x;
-    }
-    if (target.x < this.x) {
-      distance += this.x - target.x;
-    }
-    if (target.y > this.y) {
-      distance += target.y - this.y;
-    }
-    if (target.y < this.y) {
-      distance += this.y - target.y;
-    }
+  
 
-    return distance;
-  };
+  
 
   findNearSuitablePlanet = (planetArr) => {
     let planet;
@@ -85,7 +68,6 @@ class EnemyShip extends Ship {
 
   enemyAutomaticMovement = () => {
     this.moverNave(this.setTarget());
-
     this.atacarPlaneta(this.target);
   };
 }

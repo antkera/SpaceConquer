@@ -14,16 +14,25 @@ const youWinYouLooseNode = document.querySelector("#gameOverSection h1");
 const startAudioNode = document.querySelector("#startAudio");
 const winAudioNode = document.querySelector("#winAudio");
 const looseAudioNode = document.querySelector("#looseAudio");
-const audioArrNode = document.querySelectorAll(".audio")
+const audioArrNode = document.querySelectorAll(".audio");
+const tituloNode = document.querySelector(".título");
 
+///////// VOLUMEN -----------------------------------//
+audioArrNode.forEach((eachAudio) => {               //
+  eachAudio.volume = 0.1;                          //
+});// Empieza a sonar haciendo click en el título //
+tituloNode.addEventListener(                     //
+"click",() => { startAudioNode.play()});        //
+///////// -------------------------------------//
 
-// volumen ------------------------------//
-audioArrNode.forEach((eachAudio) => {   //
-  eachAudio.volume = 0.17;             //
-})                                    //
-startAudioNode.play();               //
-// ---------------------------------//
-
+const startGame = () => {
+  startAudioNode.pause();
+  gameAudioNode.play();
+  game1 = new Game();
+  gameBoxNode.style.display = "flex";
+  homePageNode.style.display = "none";
+  game1.gameLoop();
+};
 
 let game1;
 const retryGame = () => {
@@ -36,14 +45,6 @@ const retryGame = () => {
   pausedGameButtonNode.style.display = "none";
   pauseGameButtonNode.style.display = "flex";
   startGame();
-};
-const startGame = () => {
-  startAudioNode.pause()
-  gameAudioNode.play();
-  game1 = new Game();
-  gameBoxNode.style.display = "flex";
-  homePageNode.style.display = "none";
-  game1.gameLoop();
 };
 const pauseFunc = () => {
   game1.gameIsPaused = true;

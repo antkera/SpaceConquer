@@ -14,7 +14,6 @@ class Ship {
     this.shipSpeed = 2;
     this.textoInterno = `${this.tropas}`;
     this.ownColorRGB = "35, 238, 133";
-    // this.target = game1.planetArray[0];
 
     this.w = 120; //weight
     this.h = 45; //heigth
@@ -60,8 +59,6 @@ class Ship {
         (this.x === target.x && this.y === target.y)
       ) {
         this.acoplado = true;
-
-        //meter aquí funcion desembarcar ejercitos.
         return target;
       } else {
         this.acoplado = false;
@@ -105,7 +102,7 @@ class Ship {
         this.isAttacking = false;
       }
       if (target.tropas <= 0 && this.tropas > 0) {
-        target.owner = this.owner;
+        if (target.canChange){target.owner = this.owner;}
         this.isAttacking = false;
       }
     }
@@ -114,10 +111,8 @@ class Ship {
       this.tropas++;
       this.isAttacking = false;
       this.isReloading = true;
-
       this.node.style.boxShadow = `inset 0 0 0 ${this.tropas % 20}px rgba(${
-        this.ownColorRGB
-      }, 0.6)`;
+        this.ownColorRGB}, 0.6)`;
     }
     if (target.owner === this.owner && this.acoplado && target.tropas <= 0) {
       this.isAttacking = false;

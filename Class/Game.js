@@ -1,15 +1,14 @@
 class Game {
   constructor() {
-    // Propiedades del juego (cosas)
+    // Propiedades del juego
+    
     this.gameIsPaused = false;
     this.randomNumber = Math.floor(Math.random() * 4);
-    this.SlowTheGame = 2;
-    this.timer = 0;
     this.isGameOn = true;
     this.planetArray = [
       new Planet([110, 350], 1),
       new Planet([110, 450], 1),
-      new Planet([1600, 100], 1),
+      new EnemyPlanet([1600, 100], 1),
       new Planet([1600, 525], 1),
       new Planet([1235, 100], 1),
       new Planet([1000, 129], 4),
@@ -28,12 +27,11 @@ class Game {
     ];
     this.planetFocused = this.planetArray[1];
     this.planetFrom;
-
     this.enemy = new EnemyShip();
     this.ship1 = new Ship();
   }
 
-  // Métodos (acciones)
+  // Métodos 
 
   gameOver = () => {
     looseAudioNode.currentTime = 0;
@@ -65,13 +63,12 @@ class Game {
       eachPlanet.node.remove();
     });
     soundOff();
-
-
     retryButtonNode.innerText = "Play again";
     youWinYouLooseNode.innerHTML = "YOU WIN !!!";
     youWinYouLooseNode.style.color = "rgb(15, 15, 255)";
     youWinYouLooseNode.style.backgroundColor = "rgba(15, 15, 255, 0.100)";
   };
+
   checkIfGameOver = () => {
     let playerPlanets = 0;
     let enemyPlanets = 0;
@@ -82,7 +79,6 @@ class Game {
         enemyPlanets++;
       }
     });
-
     if (playerPlanets === 0 && this.ship1.tropas === 0) {
       this.gameOver();
     } else if (
@@ -116,11 +112,9 @@ class Game {
     });
   };
 
-  checkCongratulations = () => {};
 
-  // GAME LOOP -------------*********************************-------------//
-  gameLoop = () => {                                                     //
-    this.timer++;                                                       //
+  // GAME LOOP -------------*********************************------------//
+  gameLoop = () => {                                                    //
     // info de la nave:                                                //
     if (!this.ship1.acoplado) {                                       //
       this.ship1.setTargetDistance(this.planetFocused);              //

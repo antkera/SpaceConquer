@@ -1,18 +1,16 @@
 class Planet {
   constructor(coor, numFabricas) {
     this.node = document.createElement("div");
-    // this.node.src = "./resources/img/planetaHielo1.jpg";
     this.node.classList.add("PlanetImgPlayer");
     gameBoxNode.append(this.node);
 
+    this.canChange = true;
     this.numFabricas = numFabricas;
     this.maxTropas = 200 * this.numFabricas;
     this.tropas = this.maxTropas / 2;
     this.planetSize = 50 * this.numFabricas;
-    // this.textoInterno = `${this.tropas}`
     this.owner = "neutral";
     this.coor = coor;
-
     this.w = this.planetSize; //weight
     this.h = this.planetSize; //heigth
     this.x = coor[0]; // posicion eje x (desde la derecha)
@@ -43,7 +41,6 @@ class Planet {
 
   planetFocus = () => {
     game1.planetFocused = this;
-    // game1.ship1.acoplado = false
   };
 
   fabricarEjercito = () => {

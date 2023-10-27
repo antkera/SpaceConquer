@@ -6,6 +6,10 @@
   font-size: 80px;
   text-shadow: 2px 2px #ff0000;
 }
+
+.logo{
+  height: 200px;
+}
 .instrucciones {
   font-size: 20px;
   box-shadow: 10px 10 px #ff0000;
@@ -14,11 +18,10 @@
   padding-bottom: 15px;
   padding-right: 15px;
   border-radius: 20px;
-  /* margin-top: -200px; */
-  /* transition: 2s; */
   transition-duration: 3s;
   background-color: rgba(250, 250, 250, 0.397);
 }
+
 .instrucciones:hover {
   font-size: 25px;
   background-color: rgba(0, 255, 255, 0.361);
@@ -26,19 +29,19 @@
   border-width: 20px;
   padding: 40px 70px 50px 100px;
   border-radius: 200px;
-  /* margin-top: -200px; */
   transition: 2s;
 }
+
 .divStart {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
 .start-btn {
   font-family: "Press Start 2P";
   background: none;
-  /* background-color: #8dedd8; */
   background-size: cover;
   color: black;
   padding: 30px;
@@ -49,9 +52,9 @@
   border-color: rgb(0, 3, 87);
   border-width: 0px;
   transition-duration: 1s;
-
   text-shadow: 2px 2px #000dff;
 }
+
 .start-btn:hover {
   font-family: "Press Start 2P";
   background: none;
@@ -71,6 +74,7 @@ body {
   background-color: rgb(1, 10, 11);
   margin: 0;
 }
+
 #homePage {
   display: flex;
   justify-content: center;
@@ -84,10 +88,6 @@ body {
 #gameSection {
   display: none;
   background-color: black;
-  /* background-image: url("./resources/img/space\ green.jpg");
-  background-repeat: no-repeat;
-  background-size:cover; */
-
   color: red;
   position: relative;
   flex-direction: column;
@@ -116,9 +116,6 @@ body {
   background-attachment: fixed;
 }
 
-.audioDeFondo {
-}
-
 #gameOverSection {
   background-image: url(./resources/img/espacioConPlanetas.jpg);
   display: none;
@@ -139,7 +136,6 @@ body {
   font-size: 200px;
   background-color: rgba(74, 13, 8, 0.254);
   color: rgb(241, 0, 0);
-
   text-shadow: 5px 5px black;
 }
 
@@ -155,11 +151,13 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .flexed {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 .sizeL {
   height: 1080px;
 }
@@ -168,7 +166,7 @@ body {
   color: black;
   font-size: 25px;
   text-align: center;
-  margin: 25px; /* espacio que va a dejar la nave */
+  margin: 25px;
   border-radius: 1000px;
   position: absolute;
   background-color: red;
